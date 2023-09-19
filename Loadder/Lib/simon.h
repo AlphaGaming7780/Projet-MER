@@ -1,5 +1,8 @@
 #include "util.h"
 
+int sequance[] = {};
+int currentlevel = 3;
+
 void SimonSetup() {
 
 	pinMode(bouton_rouge, INPUT);
@@ -15,12 +18,25 @@ void SimonSetup() {
 
 	pinMode(buzzer, OUTPUT);
 
+	currentlevel = 3;
+
+	for(int i = 0; i<sizeof(sequance); i++) {
+		sequance[i] = NULL;
+	}
+
 }
 
 void SimonLoop() {
-	PlayBuzzer(10);
-	delay(500);
-	PlayBuzzer(255, 1000);
-	delay(500);
+
+	if(sizeof(sequance) < currentlevel) {
+		sequance = new  int[10];
+		
+	}
+
+
+
+	for(int i = 0; i < currentlevel; i++) {
+
+	}
 
 }

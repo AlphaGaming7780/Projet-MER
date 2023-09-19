@@ -13,10 +13,10 @@ const int led_bleu = 6;
 const int led_jaune = 7;
 
 const int buzzer = 3; // <- PIN PWM !!!!
-const int son_rouge = 50;
-const int son_vert = 100;
-const int son_bleu = 150;
-const int son_jaune = 200;
+// const int son_rouge = 50;
+// const int son_vert = 100;
+// const int son_bleu = 150;
+// const int son_jaune = 200;
 
 
 const int pinList[] = {
@@ -34,7 +34,6 @@ const int pinList[] = {
 /**
  * Joue un son avec le buzzer durant 250ms
  * @param int duty cycle
- * @returns void
  */
 const void PlayBuzzer(int dutycycle) {
 	analogWrite(buzzer, dutycycle);
@@ -46,7 +45,6 @@ const void PlayBuzzer(int dutycycle) {
  * Joue un song avec le buzzer
  * @param int duty cycle
  * @param int Temps du "Delay" avant de stoper le buzzer
- * @returns void
  */
 const void PlayBuzzer(int dutycycle, int time) {
 	analogWrite(buzzer, dutycycle);
