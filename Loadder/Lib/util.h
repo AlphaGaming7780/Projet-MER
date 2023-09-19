@@ -14,6 +14,9 @@ const int led_jaune = 7;
 
 const int buzzer = 3; // <- PIN PWM !!!!
 const int son_rouge = 50;
+const int son_vert = 100;
+const int son_bleu = 150;
+const int son_jaune = 200;
 
 
 const int pinList[] = {
