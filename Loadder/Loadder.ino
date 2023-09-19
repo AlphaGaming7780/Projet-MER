@@ -7,7 +7,7 @@ volatile byte state = LOW;
 
 void setup() {
 
-      attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, CHANGE);
+      attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
 
     LoadderSetup();
 
@@ -42,7 +42,7 @@ void LoadderSetup() {
 }
 
 void Reset() {
-    
+
     for (int pin : pinList) {
         digitalWrite(pin, LOW);
         pinMode(pin, NULL);
