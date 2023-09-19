@@ -23,7 +23,7 @@ void loop() {
     case 2:
         ReflexLoop();
         break;
-	case 3;
+	case 3:
 		ReflexplusLoop();
 		break;
     
