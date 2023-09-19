@@ -3,10 +3,11 @@
 #include "Lib/reflex.h"
 
 int jeu = 0;
+volatile byte state = LOW;
 
 void setup() {
 
-    attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
+      attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, CHANGE);
 
     LoadderSetup();
 
@@ -35,15 +36,20 @@ void loop() {
 }
 
 void LoadderSetup() {
+    jeu = 0;
     pinMode(bouton_rouge, INPUT);
     pinMode(bouton_vert, INPUT);
 }
 
 void Reset() {
+    
     for (int pin : pinList) {
+        digitalWrite(pin, LOW);
         pinMode(pin, NULL);
     }
 
     LoadderSetup();
+
+    state = !state;
     
 }

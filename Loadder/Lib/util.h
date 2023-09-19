@@ -5,7 +5,7 @@ const int bouton_rouge = 8;
 const int bouton_vert = 9;
 const int bouton_bleu = 10;
 const int bouton_jaune = 11;
-const int bouton_reset = 12;
+const int bouton_reset = 2; // <- Que les pins 2 ou 3
 
 const int led_rouge = 4;
 const int led_vert = 5;
