@@ -1,5 +1,8 @@
 #include "Lib/util.h"
 #include "Lib/simon.h"
+#include "Lib/reflex.h"
+
+int jeu = 0;
 
 void setup() {
 
@@ -11,10 +14,29 @@ void setup() {
 
 void loop() {
 
-    TestLoop();
-
+    switch (jeu) {
+    case 1:
+        SimonLoop();
+        break;
+    case 2:
+        ReflexLoop();
+        break;
+    
+    default:
+        if(digitalRead(bouton_rouge)) {
+            jeu = 1;
+            SimonSetup();
+        } else if (digitalRead(bouton_vert)) {
+            jeu = 2;
+            ReflexSetup();
+        }
+        break;
+    }
 }
 
 void Reset() {
-    pinMode(bouton_bleu, NULL);
+    for (int pin : pinList) {
+        pinMode(pin, NULL);
+    }
+    
 }
