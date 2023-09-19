@@ -13,6 +13,9 @@ const int led_bleu = 6;
 const int led_jaune = 7;
 
 const int buzzer = 3; // <- PIN PWM !!!!
+const int son_rouge = 50;
+
+
 
 /**
  * Joue un song avec le buzzer durant 250ms
