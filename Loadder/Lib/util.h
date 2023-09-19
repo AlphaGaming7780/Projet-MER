@@ -21,7 +21,7 @@ const int son_jaune = 200;
 
 
 /**
- * Joue un song avec le buzzer durant 250ms
+ * Joue un son avec le buzzer durant 250ms
  * @param int duty cycle
  * @returns void
  */
