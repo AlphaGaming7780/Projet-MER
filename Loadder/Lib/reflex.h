@@ -21,19 +21,22 @@ void ReflexSetup() {
 
     pinMode(buzzer, OUTPUT);
 
+	cpt= 0;
+	val= random(4,8);
 
 }
 
 void ReflexLoop() {
-	cpt= 0;
-	val= random(4,8);
+
 	//Serial.println(val);
-	if(digitalRead(val+4)==0) {
+	if(digitalRead(val+4)==1) {
 		digitalWrite(val,LOW);
 		//Serial.print("Vous avez mis ");
 		//Serial.print(cpt);
 		//Serial.println("ms pour appuyer sur le bouton");
 		delay(random(500,2500));
+		cpt= 0;
+		val= random(4,8);
 	} else {
 		digitalWrite(val,HIGH);
 		PlayBuzzer((val-7)*50);
