@@ -30,6 +30,7 @@ void ReflexLoop() {
   Serial.println(val);
   while(digitalRead(val+4)==0){
     digitalWrite(val,HIGH);
+    PlayBuzzer((val-7)*50);
     cpt++;
     delay(1);
   }
