@@ -1,6 +1,7 @@
 #include "Lib/util.h"
 #include "Lib/simon.h"
 #include "Lib/reflex.h"
+#include "Lib/reflex+.h"
 
 int jeu = 0;
 volatile byte state = LOW;
@@ -22,6 +23,9 @@ void loop() {
     case 2:
         ReflexLoop();
         break;
+	case 3;
+		ReflexplusLoop();
+		break;
     
     default:
         if(digitalRead(bouton_rouge)) {
@@ -30,7 +34,10 @@ void loop() {
         } else if (digitalRead(bouton_vert)) {
             jeu = 2;
             ReflexSetup();
-        }
+        } else if (digitalRead(bouton_bleu)){
+			jeu = 3;
+			ReflexplusSetup();
+		}
         break;
     }
 }
