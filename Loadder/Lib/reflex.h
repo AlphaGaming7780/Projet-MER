@@ -1,0 +1,41 @@
+#include <time.h>
+#include "util.h"
+
+int val;
+int cpt;
+
+
+void ReflexSetup() {
+
+  Serial.begin(9600);
+
+    pinMode(bouton_rouge, INPUT);
+    pinMode(bouton_vert, INPUT);
+    pinMode(bouton_bleu, INPUT);
+    pinMode(bouton_jaune, INPUT);
+
+    pinMode(led_rouge, OUTPUT);
+    pinMode(led_vert, OUTPUT);
+    pinMode(led_bleu, OUTPUT);
+    pinMode(led_jaune, OUTPUT);
+
+    pinMode(buzzer, OUTPUT);
+
+
+}
+
+void ReflexLoop() {
+  cpt= 0;
+  val= random(4,8);
+  Serial.println(val);
+  while(digitalRead(val+4)==0){
+    digitalWrite(val,HIGH);
+    cpt++;
+    delay(1);
+  }
+  digitalWrite(val,LOW);
+  Serial.print("Vous avez mis ");
+  Serial.print(cpt);
+  Serial.println("ms pour appuyer sur le bouton");
+  delay(random(500,2500));
+}
