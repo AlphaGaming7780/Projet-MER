@@ -19,6 +19,17 @@ const int son_bleu = 150;
 const int son_jaune = 200;
 
 
+const int pinList[] = {
+	bouton_rouge,
+	bouton_vert,
+	bouton_bleu,
+	bouton_jaune,
+	led_rouge,
+	led_vert,
+	led_bleu,
+	led_jaune,
+	buzzer,
+};
 
 /**
  * Joue un son avec le buzzer durant 250ms
