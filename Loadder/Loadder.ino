@@ -8,7 +8,7 @@ void setup() {
 
     attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
 
-    TestSetup();
+    LoadderSetup();
 
 }
 
@@ -34,9 +34,16 @@ void loop() {
     }
 }
 
+void LoadderSetup() {
+    pinMode(bouton_rouge, INPUT);
+    pinMode(bouton_vert, INPUT);
+}
+
 void Reset() {
     for (int pin : pinList) {
         pinMode(pin, NULL);
     }
+
+    LoadderSetup();
     
 }
