@@ -16,6 +16,17 @@ const int buzzer = 3; // <- PIN PWM !!!!
 const int son_rouge = 50;
 
 
+const int pinList[] = {
+	bouton_rouge,
+	bouton_vert,
+	bouton_bleu,
+	bouton_jaune,
+	led_rouge,
+	led_vert,
+	led_bleu,
+	led_jaune,
+	buzzer,
+};
 
 /**
  * Joue un song avec le buzzer durant 250ms
