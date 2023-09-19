@@ -37,8 +37,8 @@ void ReflexLoop() {
 		cpt= 0;
 		val= random(4,8);
 	} else {
+    if(cpt==0) PlayBuzzer((val-3)*63);
 		digitalWrite(val,HIGH);
-		PlayBuzzer((val-7)*50);
 		cpt++;
 		delay(1);
 	}
