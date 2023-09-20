@@ -7,14 +7,25 @@ int *sequence = new int [currentlevel]();
 bool gameSetup;
 int i;
 
-void SimonSetup() {
+void LCD_DeputDuJeu() {
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("Soyez attentif!");
+}
 
-	Serial.begin(9600);
-	// pinMode(bouton_rouge, INPUT);
-	// pinMode(bouton_vert, INPUT);
-	// pinMode(bouton_bleu, INPUT);
-	// pinMode(bouton_jaune, INPUT);
-	// pinMode(bouton_reset, INPUT);
+void LCD_LorsDuJeu() {
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("A vous de jouer");
+}
+
+void LCD_FinDujeu() {
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("Vous avez reussi");
+}
+
+void SimonSetup() {
 
 	pinMode(led_rouge, OUTPUT);
 	pinMode(led_vert, OUTPUT);
@@ -30,10 +41,8 @@ void SimonSetup() {
 	for(int i = 0; i<sizeof(sequence); i++) {
 		sequence[i] = 0;
 	}
-	for(int i = 0;i<3;i++) {
-		Serial.print(sequence[i]);
-	}
-	Serial.println();
+
+	LCD_DeputDuJeu();
 
 }
 
@@ -55,19 +64,18 @@ void SimonLoop() {
 			delay(250);
 			i++;
 		} else {
-			for(int i = 0;i < currentlevel;i++) {
-				Serial.print(sequence[i]);
-			}
-			Serial.println();
+			LCD_LorsDuJeu();
 			gameSetup = false;
 			i = 0;
 		}
 	} else {
 		if(i >= currentlevel) {
+			LCD_FinDujeu();
 			gameSetup = true;
 			currentlevel++;
 			i = 0;
 			delay(250);
+			LCD_DeputDuJeu();
 		} else if(analogRead(sequence[i]+4) >= 512) {
 			digitalWrite(sequence[i],HIGH);
 			PlayBuzzer((sequence[i]-3)*63);
@@ -75,5 +83,4 @@ void SimonLoop() {
 			i++;
 		}
 	}
-
 }

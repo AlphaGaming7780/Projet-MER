@@ -6,17 +6,18 @@
 
 int jeu = 0;
 volatile byte state = LOW;
+int gameListIndex = 0;
 
+char *gameList[3] = {
+    "Simon",
+    "Reflex",
+    "Reflex+"
+};
 
 void setup() {
-
-      attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
-
+    attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
+    lcd.begin(16, 2);
     LoadderSetup();
-		lcd.begin(16, 2);
-	lcd.print("frist line");
-	lcd.setCursor(0,1);
-	lcd.print("second line");
 
 }
 
@@ -35,21 +36,53 @@ void loop() {
     
     default:
         if(analogRead(bouton_rouge)>=512) {
-            jeu = 1;
-           SimonSetup();
+            gameListIndex++;
+            UpdateScreen();
+            delay(250);
         } else if (analogRead(bouton_vert)>=512) {
-            jeu = 2;
-            ReflexSetup();
+            jeu = gameListIndex + 1;
+            SetupGame();
         } else if (analogRead(bouton_bleu)>=512){
-			jeu = 3;
-			ReflexplusSetup();
-		}
+			jeu = gameListIndex + 2;
+            SetupGame();
+		} else if (analogRead(bouton_jaune)>=512){
+            gameListIndex--;
+            UpdateScreen();
+            delay(250);
+        }
+        break;
+    }
+}
+
+void SetupGame() {
+    switch (jeu) {
+    case 1:
+        SimonSetup();
+        break;
+    case 2:
+        ReflexSetup();
+        break;
+	case 3:
+		ReflexplusSetup();
+		break;
+    
+    default:
         break;
     }
 }
 
 void LoadderSetup() {
     jeu = 0;
+    UpdateScreen();
+}
+
+void UpdateScreen() {
+    lcd.clear();
+	lcd.print("Vert: ");
+    lcd.print(gameList[gameListIndex]);
+    lcd.setCursor(0,1),
+	lcd.print("Bleu: ");
+    lcd.print(gameList[gameListIndex + 1]);
 }
 
 void Reset() {
