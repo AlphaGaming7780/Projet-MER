@@ -82,27 +82,38 @@ void SimonLoop() {
 		if(i >= currentlevel || erreur >= 3) {
 			LCD_FinDujeu();
 			gameSetup = true;
-			currentlevel = erreur >= 3 ? 3: currentlevel++;
+			// currentlevel = erreur >= 3 ? 3 : currentlevel++;
+			if(erreur >= 3) {
+				currentlevel = 3;
+			} else {
+				currentlevel++;
+			}
+			erreur = 0;
 			i = 0;
 			delay(500);
 			LCD_DeputDuJeu();
-		} else if(analogRead(sequence[i]+4) >= 512) {
+		} else if(analogRead(sequence[i] - 4) >= 512) {
 			digitalWrite(sequence[i],HIGH);
 			PlayBuzzer((sequence[i]-3)*63);
 			digitalWrite(sequence[i], LOW);
 			i++;
-		} else if(analogRead(bouton_rouge) >= 512) {
+			delay(500);
+		} else if( sequence[i] - 4 != bouton_rouge && analogRead(bouton_rouge) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
-		}else if(analogRead(bouton_vert) >= 512) {
+			delay(500);
+		}else if(sequence[i] - 4 != bouton_vert && analogRead(bouton_vert) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
-		}else if(analogRead(bouton_bleu) >= 512) {
+			delay(500);
+		}else if(sequence[i] - 4 != bouton_bleu && analogRead(bouton_bleu) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
-		}else if(analogRead(bouton_jaune) >= 512) {
+			delay(500);
+		}else if(sequence[i] - 4 != bouton_jaune && analogRead(bouton_jaune) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
+			delay(500);
 		}
 	}
 }
