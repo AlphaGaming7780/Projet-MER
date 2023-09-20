@@ -1,17 +1,22 @@
 #include "Lib/util.h"
 #include "Lib/simon.h"
 #include "Lib/reflex.h"
-#include "Lib/reflex+.h"
+#include "Lib/reflexplus.h"
 #include <LiquidCrystal.h>
 
 int jeu = 0;
 volatile byte state = LOW;
+
 
 void setup() {
 
       attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
 
     LoadderSetup();
+		lcd.begin(16, 2);
+	lcd.print("frist line");
+	lcd.setCursor(0,1);
+	lcd.print("second line");
 
 }
 
