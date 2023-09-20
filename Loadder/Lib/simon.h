@@ -12,6 +12,8 @@ void LCD_DeputDuJeu() {
 	lcd.clear();
 	lcd.setCursor(0,0);
 	lcd.print("Soyez attentif!");
+	delete[] sequence;
+	sequence = new int [currentlevel]();
 }
 
 void LCD_LorsDuJeu() {
@@ -61,7 +63,7 @@ void SimonLoop() {
 	if(gameSetup) {
 
 		// if(sizeof(*sequence) < currentlevel) {
-		// 	delete[] sequence;
+		// 	
 		// 	sequence = new int [currentlevel];
 		// }
 
@@ -82,7 +84,6 @@ void SimonLoop() {
 		if(i >= currentlevel || erreur >= 3) {
 			LCD_FinDujeu();
 			gameSetup = true;
-			// currentlevel = erreur >= 3 ? 3 : currentlevel++;
 			if(erreur >= 3) {
 				currentlevel = 3;
 			} else {
