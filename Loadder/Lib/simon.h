@@ -9,13 +9,6 @@ int i;
 
 void SimonSetup() {
 
-	Serial.begin(9600);
-	// pinMode(bouton_rouge, INPUT);
-	// pinMode(bouton_vert, INPUT);
-	// pinMode(bouton_bleu, INPUT);
-	// pinMode(bouton_jaune, INPUT);
-	// pinMode(bouton_reset, INPUT);
-
 	pinMode(led_rouge, OUTPUT);
 	pinMode(led_vert, OUTPUT);
 	pinMode(led_bleu, OUTPUT);
@@ -30,10 +23,6 @@ void SimonSetup() {
 	for(int i = 0; i<sizeof(sequence); i++) {
 		sequence[i] = 0;
 	}
-	for(int i = 0;i<3;i++) {
-		Serial.print(sequence[i]);
-	}
-	Serial.println();
 
 }
 
@@ -55,10 +44,6 @@ void SimonLoop() {
 			delay(250);
 			i++;
 		} else {
-			for(int i = 0;i < currentlevel;i++) {
-				Serial.print(sequence[i]);
-			}
-			Serial.println();
 			gameSetup = false;
 			i = 0;
 		}

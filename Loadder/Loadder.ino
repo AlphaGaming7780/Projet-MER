@@ -6,17 +6,23 @@
 
 int jeu = 0;
 volatile byte state = LOW;
+int gameListIndex = 0;
 
+char *gameList[] = {
+    "Simon",
+    "Reflex",
+    "Reflex+"
+};
 
 void setup() {
 
-      attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
-
+    attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
     LoadderSetup();
-		lcd.begin(16, 2);
-	lcd.print("frist line");
+
+	lcd.begin(16, 2);
+	lcd.print("Vert: " + *gameList[gameListIndex]);
 	lcd.setCursor(0,1);
-	lcd.print("second line");
+	lcd.print("Rouge: " + *gameList[gameListIndex]);
 
 }
 
