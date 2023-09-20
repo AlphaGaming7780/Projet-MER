@@ -46,7 +46,6 @@ void LoadderSetup() {
     jeu = 0;
     pinMode(bouton_rouge, INPUT);
     pinMode(bouton_vert, INPUT);
-    pinMode(bouton_bleu, INPUT);
 }
 
 void Reset() {
