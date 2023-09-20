@@ -20,8 +20,8 @@ const int buzzer = 3; // <- PIN PWM !!!!
 
 //écran
 const int RS = 12;
-const int EN = 13;
-const int D4 = 11;
+const int EN = 11;
+const int D4 = 13;
 const int D5 = 10;
 const int D6 = 9;
 const int D7 = 8;
