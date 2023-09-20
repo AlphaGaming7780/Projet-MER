@@ -7,6 +7,24 @@ int *sequence = new int [currentlevel]();
 bool gameSetup;
 int i;
 
+void LCD_DeputDuJeu() {
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("Soyez attentif!");
+}
+
+void LCD_LorsDuJeu() {
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("A vous de jouer");
+}
+
+void LCD_FinDujeu() {
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("Vous avez reussi");
+}
+
 void SimonSetup() {
 
 	pinMode(led_rouge, OUTPUT);
@@ -46,7 +64,7 @@ void SimonLoop() {
 			delay(250);
 			i++;
 		} else {
-			LCD_FinDujeu();
+			LCD_LorsDuJeu();
 			gameSetup = false;
 			i = 0;
 		}
@@ -65,22 +83,4 @@ void SimonLoop() {
 			i++;
 		}
 	}
-}
-
-void LCD_DeputDuJeu() {
-	lcd.clear();
-	lcd.setCursor(0,0);
-	lcd.print("Soyez attentif!");
-}
-
-void LCD_LorsDuJeu() {
-	lcd.clear();
-	lcd.setCursor(0,0);
-	lcd.print("A vous de jouer");
-}
-
-void LCD_FinDujeu() {
-	lcd.clear();
-	lcd.setCursor(0,0);
-	lcd.print("Vous avez reussi");
 }
