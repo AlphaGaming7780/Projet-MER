@@ -6,6 +6,7 @@ int currentlevel = 3;
 int *sequence = new int [currentlevel]();
 bool gameSetup;
 int i;
+int erreur = 0;
 
 void LCD_DeputDuJeu() {
 	lcd.clear();
@@ -17,12 +18,21 @@ void LCD_LorsDuJeu() {
 	lcd.clear();
 	lcd.setCursor(0,0);
 	lcd.print("A vous de jouer");
+	lcd.setCursor(0,1);
+	lcd.print("Erreur: ");
+	lcd.print(erreur);
+	lcd.print("/3");
 }
 
 void LCD_FinDujeu() {
 	lcd.clear();
 	lcd.setCursor(0,0);
-	lcd.print("Vous avez reussi");
+	if(erreur < 3) {
+		lcd.print("Vous avez reussi");
+	} else {
+		lcd.print("vous avez perdus");
+	}
+	
 }
 
 void SimonSetup() {
@@ -69,18 +79,30 @@ void SimonLoop() {
 			i = 0;
 		}
 	} else {
-		if(i >= currentlevel) {
+		if(i >= currentlevel || erreur >= 3) {
 			LCD_FinDujeu();
 			gameSetup = true;
-			currentlevel++;
+			currentlevel = erreur >= 3 ? 3: currentlevel++;
 			i = 0;
-			delay(250);
+			delay(500);
 			LCD_DeputDuJeu();
 		} else if(analogRead(sequence[i]+4) >= 512) {
 			digitalWrite(sequence[i],HIGH);
 			PlayBuzzer((sequence[i]-3)*63);
 			digitalWrite(sequence[i], LOW);
 			i++;
+		} else if(analogRead(bouton_rouge) >= 512) {
+			erreur++;
+			LCD_LorsDuJeu();
+		}else if(analogRead(bouton_vert) >= 512) {
+			erreur++;
+			LCD_LorsDuJeu();
+		}else if(analogRead(bouton_bleu) >= 512) {
+			erreur++;
+			LCD_LorsDuJeu();
+		}else if(analogRead(bouton_jaune) >= 512) {
+			erreur++;
+			LCD_LorsDuJeu();
 		}
 	}
 }
