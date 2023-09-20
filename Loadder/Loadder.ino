@@ -40,16 +40,33 @@ void loop() {
             UpdateScreen();
             delay(250);
         } else if (analogRead(bouton_vert)>=512) {
-            jeu = gameListIndex;
-            ReflexSetup();
+            jeu = gameListIndex + 1;
+            SetupGame();
         } else if (analogRead(bouton_bleu)>=512){
-			jeu = gameListIndex + 1;
-			ReflexplusSetup();
+			jeu = gameListIndex + 2;
+            SetupGame();
 		} else if (analogRead(bouton_jaune)>=512){
             gameListIndex--;
             UpdateScreen();
             delay(250);
         }
+        break;
+    }
+}
+
+void SetupGame() {
+    switch (jeu) {
+    case 1:
+        SimonSetup();
+        break;
+    case 2:
+        ReflexSetup();
+        break;
+	case 3:
+		ReflexplusSetup();
+		break;
+    
+    default:
         break;
     }
 }
@@ -64,7 +81,7 @@ void UpdateScreen() {
 	lcd.print("Vert: ");
     lcd.print(gameList[gameListIndex]);
     lcd.setCursor(0,1),
-	lcd.print("Rouge: ");
+	lcd.print("Bleu: ");
     lcd.print(gameList[gameListIndex + 1]);
 }
 
