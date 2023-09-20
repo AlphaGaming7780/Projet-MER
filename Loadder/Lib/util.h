@@ -1,10 +1,10 @@
 #ifndef UTIL.h
 #define UTIL.H
 
-const int bouton_rouge = 8;
-const int bouton_vert = 9;
-const int bouton_bleu = 10;
-const int bouton_jaune = 11;
+const int bouton_rouge = 0;
+const int bouton_vert = 1;
+const int bouton_bleu = 2;
+const int bouton_jaune = 3;
 const int bouton_reset = 2; // <- Que les pins 2 ou 3
 
 const int led_rouge = 4;
@@ -20,10 +20,10 @@ const int buzzer = 3; // <- PIN PWM !!!!
 
 
 const int pinList[] = {
-	bouton_rouge,
-	bouton_vert,
-	bouton_bleu,
-	bouton_jaune,
+	//bouton_rouge,
+	//bouton_vert,
+	//bouton_bleu,
+	//bouton_jaune,
 	led_rouge,
 	led_vert,
 	led_bleu,
@@ -53,11 +53,6 @@ const void PlayBuzzer(int dutycycle, int time) {
 }
 
 const void TestSetup() {
-	pinMode(bouton_rouge, INPUT);
-	pinMode(bouton_vert, INPUT);
-	pinMode(bouton_bleu, INPUT);
-	pinMode(bouton_jaune, INPUT);
-	pinMode(bouton_reset, INPUT);
 
 	pinMode(led_rouge, OUTPUT);
 	pinMode(led_vert, OUTPUT);
@@ -68,25 +63,25 @@ const void TestSetup() {
 }
 
 const void TestLoop() {
-	if(digitalRead(bouton_rouge)) {
+	if(analogRead(bouton_rouge)>=512) {
 		digitalWrite(led_rouge, HIGH);
 	} else {
 		digitalWrite(led_rouge, LOW);
 	}
 
-	if(digitalRead(bouton_vert)) {
+	if(analogRead(bouton_vert)>=512) {
 		digitalWrite(led_vert, HIGH);
 	} else {
 		digitalWrite(led_vert, LOW);
 	}
 
-	if(digitalRead(bouton_bleu)) {
+	if(analogRead(bouton_bleu)>=512) {
 		digitalWrite(led_bleu, HIGH);
 	} else {
 		digitalWrite(led_bleu, LOW);
 	}
 
-	if(digitalRead(bouton_jaune)) {
+	if(analogRead(bouton_jaune)>=512) {
 		digitalWrite(led_jaune, HIGH);
 	} else {
 		digitalWrite(led_jaune, LOW);

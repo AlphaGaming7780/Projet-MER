@@ -18,7 +18,7 @@ void loop() {
 
     switch (jeu) {
     case 1:
-        SimonLoop();
+        //SimonLoop();
         break;
     case 2:
         ReflexLoop();
@@ -28,13 +28,13 @@ void loop() {
 		break;
     
     default:
-        if(digitalRead(bouton_rouge)) {
+        if(analogRead(bouton_rouge)>=512) {
             jeu = 1;
-            SimonSetup();
-        } else if (digitalRead(bouton_vert)) {
+           // SimonSetup();
+        } else if (analogRead(bouton_vert)>=512) {
             jeu = 2;
             ReflexSetup();
-        } else if (digitalRead(bouton_bleu)){
+        } else if (analogRead(bouton_bleu)>=512){
 			jeu = 3;
 			ReflexplusSetup();
 		}
@@ -44,8 +44,6 @@ void loop() {
 
 void LoadderSetup() {
     jeu = 0;
-    pinMode(bouton_rouge, INPUT);
-    pinMode(bouton_vert, INPUT);
 }
 
 void Reset() {
