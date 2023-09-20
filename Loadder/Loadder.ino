@@ -2,6 +2,7 @@
 #include "Lib/simon.h"
 #include "Lib/reflex.h"
 #include "Lib/reflex+.h"
+#include <LiquidCrystal.h>
 
 int jeu = 0;
 volatile byte state = LOW;
