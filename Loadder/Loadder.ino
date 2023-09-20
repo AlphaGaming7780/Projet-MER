@@ -73,6 +73,7 @@ void SetupGame() {
 
 void LoadderSetup() {
     jeu = 0;
+    gameListIndex = 0;
     UpdateScreen();
 }
 
