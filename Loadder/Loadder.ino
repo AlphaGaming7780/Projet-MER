@@ -18,7 +18,7 @@ void loop() {
 
     switch (jeu) {
     case 1:
-        //SimonLoop();
+        SimonLoop();
         break;
     case 2:
         ReflexLoop();
@@ -30,7 +30,7 @@ void loop() {
     default:
         if(analogRead(bouton_rouge)>=512) {
             jeu = 1;
-           // SimonSetup();
+           SimonSetup();
         } else if (analogRead(bouton_vert)>=512) {
             jeu = 2;
             ReflexSetup();

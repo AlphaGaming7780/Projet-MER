@@ -10,11 +10,11 @@ int i;
 void SimonSetup() {
 
 	Serial.begin(9600);
-	pinMode(bouton_rouge, INPUT);
-	pinMode(bouton_vert, INPUT);
-	pinMode(bouton_bleu, INPUT);
-	pinMode(bouton_jaune, INPUT);
-	pinMode(bouton_reset, INPUT);
+	// pinMode(bouton_rouge, INPUT);
+	// pinMode(bouton_vert, INPUT);
+	// pinMode(bouton_bleu, INPUT);
+	// pinMode(bouton_jaune, INPUT);
+	// pinMode(bouton_reset, INPUT);
 
 	pinMode(led_rouge, OUTPUT);
 	pinMode(led_vert, OUTPUT);
@@ -68,7 +68,7 @@ void SimonLoop() {
 			currentlevel++;
 			i = 0;
 			delay(250);
-		} else if(digitalRead(sequence[i]+4)) {
+		} else if(analogRead(sequence[i]+4) >= 512) {
 			digitalWrite(sequence[i],HIGH);
 			PlayBuzzer((sequence[i]-3)*63);
 			digitalWrite(sequence[i], LOW);

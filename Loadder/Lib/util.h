@@ -54,10 +54,10 @@ const void PlayBuzzer(int dutycycle, int time) {
 
 const void TestSetup() {
 
-	pinMode(led_rouge, OUTPUT);
-	pinMode(led_vert, OUTPUT);
-	pinMode(led_bleu, OUTPUT);
-	pinMode(led_jaune, OUTPUT);
+	// pinMode(led_rouge, OUTPUT);
+	// pinMode(led_vert, OUTPUT);
+	// pinMode(led_bleu, OUTPUT);
+	// pinMode(led_jaune, OUTPUT);
 
 	pinMode(buzzer, OUTPUT);
 }
