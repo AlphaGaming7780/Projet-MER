@@ -1,4 +1,5 @@
 #include "util.h"
+#include "LiquidCrystal.h"
 
 int val;
 int cpt;
