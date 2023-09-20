@@ -8,10 +8,6 @@ void ReflexSetup() {
 
   //Serial.begin(9600);
 
-    pinMode(bouton_rouge, INPUT);
-    pinMode(bouton_vert, INPUT);
-    pinMode(bouton_bleu, INPUT);
-    pinMode(bouton_jaune, INPUT);
 
     pinMode(led_rouge, OUTPUT);
     pinMode(led_vert, OUTPUT);
@@ -28,7 +24,7 @@ void ReflexSetup() {
 void ReflexLoop() {
 
 	//Serial.println(val);
-	if(digitalRead(val+4)==1) {
+	if(analogRead(val-4)>=512) {
 		digitalWrite(val,LOW);
 		//Serial.print("Vous avez mis ");
 		//Serial.print(cpt);

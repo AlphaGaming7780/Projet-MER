@@ -1,6 +1,6 @@
 #include "util.h"
 
-int sequance[] = {};
+/*int sequance[] = {};
 int currentlevel = 3;
 
 void SimonSetup() {
@@ -39,4 +39,4 @@ void SimonLoop() {
 
 	}
 
-}
+}*/
