@@ -1,8 +1,8 @@
 #include "util.h"
-#include <LiquidCrystal.h>
 
 int val;
-int cpt;
+long int t1, t2, tf;
+bool buz = true;
 
 void ReflexSetup() {
 
@@ -13,8 +13,6 @@ void ReflexSetup() {
     pinMode(led_jaune, OUTPUT);
 
     pinMode(buzzer, OUTPUT);
-
-	cpt= 0;
 	val= random(4,8);
 
 }
@@ -22,19 +20,24 @@ void ReflexSetup() {
 void ReflexLoop() {
 
 	//Serial.println(val);
-	lcd.clear();
 	if(analogRead(val-4)>=512) {
+		t2 = millis();
+		tf = t2 - t1;
+		lcd.clear();
 		digitalWrite(val,LOW);
 		lcd.print("Vous avez mis ");
-		//Serial.print(cpt);
-		//Serial.println("ms pour appuyer sur le bouton");
+		lcd.setCursor(0,1);
+		lcd.print(tf);
+		lcd.print(" ms");
+		buz = true;
 		delay(random(500,2500));
-		cpt= 0;
 		val= random(4,8);
 	} else {
 		digitalWrite(val,HIGH);
-		if(cpt==0) PlayBuzzer((val-3)*63);
-		cpt++;
-		delay(1);
+		if(buz) {
+			t1 = millis();
+			PlayBuzzer((val-3)*63);
+			}
+		buz = false;
 	}
 }

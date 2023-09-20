@@ -22,10 +22,10 @@ const int buzzer = 3; // <- PIN PWM !!!!
 //écran
 const int RS = 12;
 const int EN = 11;
-const int D4 = 8;
-const int D5 = 9;
-const int D6 = 10;
-const int D7 = 13;
+const int D4 = 13;
+const int D5 = 10;
+const int D6 = 9;
+const int D7 = 8;
 
 LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
 
