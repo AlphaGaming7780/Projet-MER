@@ -63,11 +63,11 @@ const void PlayBuzzer(int dutycycle, int time) {
 }
 
 /**
- * envoie une certain fréquance au Buzzer
+ * Joue une  ertain fréquence pour le buzzer pendant 250 ms
  * @param int Frequance
  */
 const void ToneBuzzer(int frequancy) {
-	tone(buzzer, frequancy);
+	tone(buzzer, frequancy, 250);
 }
 
 /**
@@ -78,7 +78,6 @@ const void ToneBuzzer(int frequancy) {
 const void ToneBuzzer(int frequancy, int duration) {
 	tone(buzzer, frequancy, duration);
 }
-
 
 const void TestSetup() {
 

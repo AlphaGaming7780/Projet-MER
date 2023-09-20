@@ -62,16 +62,11 @@ void SimonLoop() {
 
 	if(gameSetup) {
 
-		// if(sizeof(*sequence) < currentlevel) {
-		// 	
-		// 	sequence = new int [currentlevel];
-		// }
-
 		if(i<currentlevel) {
 			int val = random(4,8);
 			sequence[i] = val;
 			digitalWrite(val,HIGH);
-			PlayBuzzer((val-3)*63);
+			ToneBuzzer((val-3)*2500);
 			digitalWrite(val, LOW);
 			delay(250);
 			i++;
@@ -95,7 +90,7 @@ void SimonLoop() {
 			LCD_DeputDuJeu();
 		} else if(analogRead(sequence[i] - 4) >= 512) {
 			digitalWrite(sequence[i],HIGH);
-			PlayBuzzer((sequence[i]-3)*63);
+			ToneBuzzer((sequence[i]-3)*2500);
 			digitalWrite(sequence[i], LOW);
 			i++;
 			delay(250);

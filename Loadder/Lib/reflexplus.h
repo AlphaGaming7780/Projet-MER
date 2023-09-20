@@ -18,7 +18,7 @@ void ReflexplusSetup(){
     pinMode(buzzer, OUTPUT);
 
     vale = random(1,5);
-    PlayBuzzer(vale*63);
+    ToneBuzzer(vale*63);
 }
 
 void ReflexplusLoop(){
@@ -35,7 +35,7 @@ void ReflexplusLoop(){
         digitalWrite(vale+3, HIGH);
         lcd.print("Bonne couleur");
         vale = random(1,5);
-        PlayBuzzer(vale*63);
+        ToneBuzzer(vale*63);
     }
 
 
