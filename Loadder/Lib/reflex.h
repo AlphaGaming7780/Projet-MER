@@ -2,7 +2,7 @@
 
 int val;
 long int t1, t2, tf;
-bool buz = true;
+bool newgame;
 
 void ReflexSetup() {
 
@@ -13,14 +13,21 @@ void ReflexSetup() {
     pinMode(led_jaune, OUTPUT);
 
     pinMode(buzzer, OUTPUT);
-	val= random(4,8);
+	newgame = true;
 
 }
 
 void ReflexLoop() {
 
-	//Serial.println(val);
-	if(analogRead(val-4)>=512) {
+	if(newgame){
+		val= random(4,8);
+		digitalWrite(val,HIGH);
+		t1 = millis();
+		ToneBuzzer((val-3)*1000, 250);
+		newgame = false;
+	}
+
+	else if(analogRead(val-4)>=512) {
 		t2 = millis();
 		tf = t2 - t1;
 		lcd.clear();
@@ -29,15 +36,8 @@ void ReflexLoop() {
 		lcd.setCursor(0,1);
 		lcd.print(tf);
 		lcd.print(" ms");
-		buz = true;
+		newgame = true;
 		delay(random(500,2500));
-		val= random(4,8);
-	} else {
-		digitalWrite(val,HIGH);
-		if(buz) {
-			t1 = millis();
-			PlayBuzzer((val-3)*63);
-			}
-		buz = false;
+
 	}
 }
