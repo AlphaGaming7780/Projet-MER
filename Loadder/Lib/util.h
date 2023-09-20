@@ -18,6 +18,14 @@ const int buzzer = 3; // <- PIN PWM !!!!
 // const int son_bleu = 150;
 // const int son_jaune = 200;
 
+//écran
+const int RS = 12;
+const int EN = 13;
+const int D4 = 11;
+const int D5 = 10;
+const int D6 = 9;
+const int D7 = 8;
+
 
 const int pinList[] = {
 	//bouton_rouge,
