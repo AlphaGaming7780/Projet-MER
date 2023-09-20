@@ -1,5 +1,6 @@
 #include "util.h"
 #include "LiquidCrystal.h"
+#include "time.h"
 
 int val;
 int cpt;
@@ -29,14 +30,18 @@ void ReflexSetup() {
 void ReflexLoop() {
 
 	//Serial.println(val);
-	lcd.clear();
+	 cpt = time_t();
+
+
 	if(analogRead(val-4)>=512) {
+		cpt= time_t() - cpt;
+		lcd.clear();
 		digitalWrite(val,LOW);
 		lcd.print("Vous avez mis ");
-		//Serial.print(cpt);
-		//Serial.println("ms pour appuyer sur le bouton");
+		lcd.setCursor(0,1);
+		lcd.print(cpt);
+		lcd.print(" ms");
 		delay(random(500,2500));
-		cpt= 0;
 		val= random(4,8);
 	} else {
 		digitalWrite(val,HIGH);
