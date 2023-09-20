@@ -62,6 +62,24 @@ const void PlayBuzzer(int dutycycle, int time) {
 	digitalWrite(buzzer, LOW);
 }
 
+/**
+ * envoie une certain fréquance au Buzzer
+ * @param int Frequance
+ */
+const void ToneBuzzer(int frequancy) {
+	tone(buzzer, frequancy);
+}
+
+/**
+ * envoie une certain fréquance au Buzzer
+ * @param int Fréquance
+ * @param int Durée du signale
+ */
+const void ToneBuzzer(int frequancy, int duration) {
+	tone(buzzer, frequancy, duration);
+}
+
+
 const void TestSetup() {
 
 	// pinMode(led_rouge, OUTPUT);
