@@ -8,13 +8,15 @@ int jeu = 0;
 volatile byte state = LOW;
 int gameListIndex = 0;
 
-char *gameList[3] = {
+char *gameList[4] = {
     "Simon",
     "Reflex",
-    "Reflex+"
+    "Reflex+",
+    "null"
 };
 
 void setup() {
+    Serial.begin(9600);
     attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
     lcd.begin(16, 2);
     LoadderSetup();
@@ -36,7 +38,11 @@ void loop() {
     
     default:
         if(analogRead(bouton_rouge)>=512) {
-            gameListIndex++;
+            if(gameListIndex >= (sizeof(gameList)/2) - 2) {
+                gameListIndex = 0;
+            } else {
+                gameListIndex++;
+            }
             UpdateScreen();
             delay(250);
         } else if (analogRead(bouton_vert)>=512) {
@@ -46,7 +52,11 @@ void loop() {
 			jeu = gameListIndex + 2;
             SetupGame();
 		} else if (analogRead(bouton_jaune)>=512){
-            gameListIndex--;
+            if(gameListIndex <= 0) {
+                gameListIndex = (sizeof(gameList)/2) - 2;
+            } else {
+                gameListIndex--;
+            }
             UpdateScreen();
             delay(250);
         }
@@ -83,6 +93,7 @@ void UpdateScreen() {
     lcd.setCursor(0,1),
 	lcd.print("Bleu: ");
     lcd.print(gameList[gameListIndex + 1]);
+    //Serial.println(sizeof(gameList));
 }
 
 void Reset() {
