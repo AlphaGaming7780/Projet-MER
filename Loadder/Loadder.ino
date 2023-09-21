@@ -8,11 +8,10 @@ int jeu = 0;
 volatile byte state = LOW;
 int gameListIndex = 0;
 
-char *gameList[4] = {
+char *gameList[3] = {
     "Simon",
     "Reflex",
-    "Reflex+",
-    "null"
+    "Reflex+"
 };
 
 void setup() {
