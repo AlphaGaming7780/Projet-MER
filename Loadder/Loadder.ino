@@ -82,6 +82,7 @@ void SetupGame() {
 
 void LoadderSetup() {
     jeu = 0;
+    randomSeed(analogRead(5));
     UpdateScreen();
 }
 
