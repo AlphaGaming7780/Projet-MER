@@ -94,25 +94,25 @@ const void TestSetup() {
 }
 
 const void TestLoop() {
-	if(analogRead(bouton_rouge)>=512) {
+	if(digitalRead(bouton_rouge)) {
 		digitalWrite(led_rouge, HIGH);
 	} else {
 		digitalWrite(led_rouge, LOW);
 	}
 
-	if(analogRead(bouton_vert)>=512) {
+	if(digitalRead(bouton_vert)) {
 		digitalWrite(led_vert, HIGH);
 	} else {
 		digitalWrite(led_vert, LOW);
 	}
 
-	if(analogRead(bouton_bleu)>=512) {
+	if(digitalRead(bouton_bleu)) {
 		digitalWrite(led_bleu, HIGH);
 	} else {
 		digitalWrite(led_bleu, LOW);
 	}
 
-	if(analogRead(bouton_jaune)>=512) {
+	if(digitalRead(bouton_jaune)) {
 		digitalWrite(led_jaune, HIGH);
 	} else {
 		digitalWrite(led_jaune, LOW);

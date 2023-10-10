@@ -27,7 +27,7 @@ void ReflexLoop() {
 		newgame = false;
 	}
 
-	else if(analogRead(val-4)>=512) {
+	else if(digitalRead(val+10)) {
 		t2 = millis();
 		tf = t2 - t1;
 		lcd.clear();

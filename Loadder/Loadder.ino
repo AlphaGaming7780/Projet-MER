@@ -36,7 +36,7 @@ void loop() {
 		break;
     
     default:
-        if(digitalRead(bouton_rouge)>=512) {
+        if(digitalRead(bouton_rouge)) {
             if(gameListIndex >= (sizeof(gameList)/2) - 2) {
                 gameListIndex = 0;
             } else {
@@ -44,13 +44,13 @@ void loop() {
             }
             UpdateScreen();
             delay(250);
-        } else if (digitalRead(bouton_vert)>=512) {
+        } else if (digitalRead(bouton_vert)) {
             jeu = gameListIndex + 1;
             SetupGame();
-        } else if (digitalRead(bouton_bleu)>=512){
+        } else if (digitalRead(bouton_bleu)){
 			jeu = gameListIndex + 2;
             SetupGame();
-		} else if (digitalRead(bouton_jaune)>=512){
+		} else if (digitalRead(bouton_jaune)){
             if(gameListIndex <= 0) {
                 gameListIndex = (sizeof(gameList)/2) - 2;
             } else {
