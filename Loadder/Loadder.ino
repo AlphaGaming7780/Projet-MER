@@ -74,6 +74,8 @@ void SetupGame() {
         digitalWrite(pin, LOW);
     }
 
+    delay(250);
+
     switch (jeu) {
     case 1:
         SimonSetup();
