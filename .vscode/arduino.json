@@ -2,5 +2,5 @@
     "sketch": "Loadder\\Loadder.ino",
     "board": "arduino:avr:uno",
     "programmer": "avrisp",
-    "port": "COM5"
+    "port": "COM7"
 }
