@@ -10,16 +10,6 @@ void ReflexplusSetup(){
     lcd.clear();
 
     erreur2 = 0;
-
-
-
-    pinMode(led_rouge, OUTPUT);
-    pinMode(led_vert, OUTPUT);
-    pinMode(led_bleu, OUTPUT);
-    pinMode(led_jaune, OUTPUT);
-
-    pinMode(buzzer, OUTPUT);
-
     start = true;
     
 }
