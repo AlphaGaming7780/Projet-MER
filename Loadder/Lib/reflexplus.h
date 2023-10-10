@@ -1,9 +1,9 @@
 #include "util.h"
 
 int vale;
-int erreur;
+int erreurr;
 bool push = false;
-bool newgame;
+bool newg;
 
 
 void ReflexplusSetup(){
@@ -19,19 +19,19 @@ void ReflexplusSetup(){
 
     pinMode(buzzer, OUTPUT);
 
-    erreur = 0;
+    erreurr = 0;
 
     
 }
 
 void ReflexplusLoop(){
 
-    if(newgame){
+    if(newg){
         lcd.clear();
         vale = random(4,8);
         lcd.print("Soyez attentif !");
         ToneBuzzer((vale-3)*1000, 500);
-        newgame = false;
+        newg = false;
         lcd.clear();
         lcd.print("Quelle est la");
         lcd.setCursor(0,1);
@@ -42,29 +42,29 @@ void ReflexplusLoop(){
     else if(analogRead(bouton_rouge)>=512 && vale == bouton_rouge-4){
         lcd.clear();
         lcd.print("Bonne couleur");
-        newgame = true;
+        newg = true;
     }
 
     else if(analogRead(bouton_vert)>=512 && vale == bouton_vert-4){
 		lcd.clear();
         lcd.print("Bonne couleur");
-        newgame = true;
+        newg = true;
     }
 
     else if(analogRead(bouton_bleu)>=512 && vale == bouton_bleu-4){
 		lcd.clear();
         lcd.print("Bonne couleur");
-        newgame = true;
+        newg = true;
     }
 
     if(analogRead(bouton_jaune)>=512 && vale == bouton_jaune-4){
 		lcd.clear();
         lcd.print("Bonne couleur");
-        newgame = true;
+        newg = true;
     }
 
-	else if(){
-            erreur++;
+	/*else if(){
+            erreurr++;
             lcd.clear();
             lcd.print("Mauvaise couleur");
             ToneBuzzer(500,250);
@@ -73,7 +73,7 @@ void ReflexplusLoop(){
             lcd.setCursor(0,1);
             lcd.print("Erreurs : ");
             lcd.print(erreur);
-        }
+        }*/
 
 
 
