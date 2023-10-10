@@ -7,12 +7,6 @@ bool newgame;
 void ReflexSetup() {
 
   //Serial.begin(9600);
-    pinMode(led_rouge, OUTPUT);
-    pinMode(led_vert, OUTPUT);
-    pinMode(led_bleu, OUTPUT);
-    pinMode(led_jaune, OUTPUT);
-
-    pinMode(buzzer, OUTPUT);
 	newgame = true;
 
 }
@@ -27,7 +21,7 @@ void ReflexLoop() {
 		newgame = false;
 	}
 
-	else if(digitalRead(val+10)) {
+	else if(!digitalRead(val+10)) {
 		t2 = millis();
 		tf = t2 - t1;
 		lcd.clear();

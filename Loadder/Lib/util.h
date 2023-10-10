@@ -8,6 +8,7 @@ const int bouton_bleu = A2;
 const int bouton_jaune = A3;
 const int bouton_reset = 2; // <- Que les pins 2 ou 3
 
+const int led_blanc = 1;
 const int led_rouge = 4;
 const int led_vert = 5;
 const int led_bleu = 6;
@@ -30,16 +31,28 @@ const int D7 = 13;
 LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
 
 const int pinList[] = {
-	//bouton_rouge,
-	//bouton_vert,
-	//bouton_bleu,
-	//bouton_jaune,
+	led_blanc,
 	led_rouge,
 	led_vert,
 	led_bleu,
 	led_jaune,
 	buzzer,
 };
+
+const int ledPinList[] = {
+	led_blanc,
+	led_rouge,
+	led_vert,
+	led_bleu,
+	led_jaune,
+};
+
+// const int bouttonPinList[] = {
+// 	bouton_rouge,
+// 	bouton_vert,
+// 	bouton_bleu,
+// 	bouton_jaune,
+// }
 
 /**
  * Joue un son avec le buzzer durant 250ms
@@ -94,31 +107,31 @@ const void TestSetup() {
 }
 
 const void TestLoop() {
-	if(digitalRead(bouton_rouge)) {
+	if(!digitalRead(bouton_rouge)) {
 		digitalWrite(led_rouge, HIGH);
 	} else {
 		digitalWrite(led_rouge, LOW);
 	}
 
-	if(digitalRead(bouton_vert)) {
+	if(!digitalRead(bouton_vert)) {
 		digitalWrite(led_vert, HIGH);
 	} else {
 		digitalWrite(led_vert, LOW);
 	}
 
-	if(digitalRead(bouton_bleu)) {
+	if(!digitalRead(bouton_bleu)) {
 		digitalWrite(led_bleu, HIGH);
 	} else {
 		digitalWrite(led_bleu, LOW);
 	}
 
-	if(digitalRead(bouton_jaune)) {
+	if(!digitalRead(bouton_jaune)) {
 		digitalWrite(led_jaune, HIGH);
 	} else {
 		digitalWrite(led_jaune, LOW);
 	}
 
-	if(digitalRead(bouton_reset)) {
+	if(!digitalRead(bouton_reset)) {
 		PlayBuzzer(100);
 	}
 }

@@ -39,16 +39,10 @@ void LCD_FinDujeu() {
 
 void SimonSetup() {
 
-	pinMode(led_rouge, OUTPUT);
-	pinMode(led_vert, OUTPUT);
-	pinMode(led_bleu, OUTPUT);
-	pinMode(led_jaune, OUTPUT);
-
-	pinMode(buzzer, OUTPUT);
-
 	currentlevel = 3;
 	gameSetup = true;
 	i = 0;
+	erreur = 0;
 
 	for(int i = 0; i<sizeof(sequence); i++) {
 		sequence[i] = 0;
@@ -88,25 +82,25 @@ void SimonLoop() {
 			i = 0;
 			delay(500);
 			LCD_DeputDuJeu();
-		} else if(digitalRead(sequence[i] + 10)) {
+		} else if(!digitalRead(sequence[i] + 10)) {
 			digitalWrite(sequence[i],HIGH);
 			ToneBuzzer((sequence[i]-3)*2500);
 			digitalWrite(sequence[i], LOW);
 			i++;
 			delay(250);
-		} else if( sequence[i] + 10 != bouton_rouge && digitalRead(bouton_rouge)) {
+		} else if( sequence[i] + 10 != bouton_rouge && !digitalRead(bouton_rouge)) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);
-		}else if(sequence[i] + 10 != bouton_vert && digitalRead(bouton_vert)) {
+		}else if(sequence[i] + 10 != bouton_vert && !digitalRead(bouton_vert)) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);
-		}else if(sequence[i] + 10 != bouton_bleu && digitalRead(bouton_bleu)) {
+		}else if(sequence[i] + 10 != bouton_bleu && !digitalRead(bouton_bleu)) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);
-		}else if(sequence[i] + 10 != bouton_jaune && digitalRead(bouton_jaune)) {
+		}else if(sequence[i] + 10 != bouton_jaune && !digitalRead(bouton_jaune)) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);

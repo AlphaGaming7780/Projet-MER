@@ -16,8 +16,13 @@ char *gameList[3] = {
 
 void setup() {
     Serial.begin(9600);
-    attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, RISING);
+    attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, FALLING);
     lcd.begin(16, 2);
+
+    for(int pin: pinList){
+        pinMode(pin, OUTPUT);
+    }
+
     LoadderSetup();
 
 }
@@ -36,7 +41,7 @@ void loop() {
 		break;
     
     default:
-        if(digitalRead(bouton_rouge)) {
+        if(!digitalRead(bouton_rouge)) {
             if(gameListIndex >= (sizeof(gameList)/2) - 2) {
                 gameListIndex = 0;
             } else {
@@ -44,13 +49,13 @@ void loop() {
             }
             UpdateScreen();
             delay(250);
-        } else if (digitalRead(bouton_vert)) {
+        } else if (!digitalRead(bouton_vert)) {
             jeu = gameListIndex + 1;
             SetupGame();
-        } else if (digitalRead(bouton_bleu)){
+        } else if (!digitalRead(bouton_bleu)){
 			jeu = gameListIndex + 2;
             SetupGame();
-		} else if (digitalRead(bouton_jaune)){
+		} else if (!digitalRead(bouton_jaune)){
             if(gameListIndex <= 0) {
                 gameListIndex = (sizeof(gameList)/2) - 2;
             } else {
@@ -64,6 +69,11 @@ void loop() {
 }
 
 void SetupGame() {
+    
+    for(int pin: ledPinList){
+        digitalWrite(pin, LOW);
+    }
+
     switch (jeu) {
     case 1:
         SimonSetup();
@@ -82,6 +92,23 @@ void SetupGame() {
 
 void LoadderSetup() {
     jeu = 0;
+
+    if(digitalRead(bouton_rouge)) {
+        digitalWrite(led_rouge, HIGH);
+    }
+    if(digitalRead(bouton_vert)) {
+        digitalWrite(led_vert, HIGH);
+    }
+    if(digitalRead(bouton_bleu)) {
+        digitalWrite(led_bleu, HIGH);
+    }
+    if(digitalRead(bouton_jaune)) {
+        digitalWrite(led_jaune, HIGH);
+    }
+    if(digitalRead(bouton_reset)) {
+        digitalWrite(led_blanc, HIGH);
+    }
+
     randomSeed(analogRead(5));
     UpdateScreen();
 }
@@ -98,10 +125,10 @@ void UpdateScreen() {
 
 void Reset() {
 
-    for (int pin : pinList) {
-        digitalWrite(pin, LOW);
-        pinMode(pin, NULL);
-    }
+    // for (int pin : pinList) {
+    //     digitalWrite(pin, LOW);
+    //     pinMode(pin, NULL);
+    // }
 
     LoadderSetup();
 
