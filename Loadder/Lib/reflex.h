@@ -14,6 +14,8 @@ void ReflexSetup() {
 
     pinMode(buzzer, OUTPUT);
 	newgame = true;
+	lcd.clear();
+	lcd.print("Reflex !");
 
 }
 
@@ -23,7 +25,7 @@ void ReflexLoop() {
 		val= random(4,8);
 		digitalWrite(val,HIGH);
 		t1 = millis();
-		ToneBuzzer((val-3)*1000, 250);
+		ToneBuzzer((val-3)*2500, 250);
 		newgame = false;
 	}
 

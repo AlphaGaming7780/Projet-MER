@@ -1,14 +1,15 @@
 #include "util.h"
 
-int vale;
-int erreurr;
-bool push = false;
-bool newg;
+int led;
+bool start;
+int erreur2;
 
 
 void ReflexplusSetup(){
 
     lcd.clear();
+
+    erreur2 = 0;
 
 
 
@@ -19,62 +20,55 @@ void ReflexplusSetup(){
 
     pinMode(buzzer, OUTPUT);
 
-    erreurr = 0;
-
+    start = true;
     
+}
+
+void lcdnscreen(){
+    lcd.clear();
+    lcd.print("Trouvez couleur");
+    lcd.setCursor(0,1);
+    lcd.print("erreurs : ");
+    lcd.print(erreur2);
 }
 
 void ReflexplusLoop(){
 
-    if(newg){
+    if(start){
         lcd.clear();
-        vale = random(4,8);
         lcd.print("Soyez attentif !");
-        ToneBuzzer((vale-3)*1000, 500);
-        newg = false;
-        lcd.clear();
-        lcd.print("Quelle est la");
-        lcd.setCursor(0,1);
-        lcd.print("couleur ?");
-
+        led = random(4,8);
+        ToneBuzzer((led-3)*2500, 500);
+        start = false;
+        erreur2 = 0;
+        lcdnscreen();
     }
-
-    else if(analogRead(bouton_rouge)>=512 && vale == bouton_rouge-4){
-        lcd.clear();
-        lcd.print("Bonne couleur");
-        newg = true;
-    }
-
-    else if(analogRead(bouton_vert)>=512 && vale == bouton_vert-4){
-		lcd.clear();
-        lcd.print("Bonne couleur");
-        newg = true;
-    }
-
-    else if(analogRead(bouton_bleu)>=512 && vale == bouton_bleu-4){
-		lcd.clear();
-        lcd.print("Bonne couleur");
-        newg = true;
-    }
-
-    if(analogRead(bouton_jaune)>=512 && vale == bouton_jaune-4){
-		lcd.clear();
-        lcd.print("Bonne couleur");
-        newg = true;
-    }
-
-	/*else if(){
-            erreurr++;
+    else{
+        if (digitalRead(led+10)){
+            digitalWrite(led, HIGH);
+            ToneBuzzer((led-3)*2500, 250);
+            digitalWrite(led, LOW);
             lcd.clear();
-            lcd.print("Mauvaise couleur");
-            ToneBuzzer(500,250);
-            lcd.clear();
-            lcd.print("Réessayez");
-            lcd.setCursor(0,1);
-            lcd.print("Erreurs : ");
-            lcd.print(erreur);
-        }*/
-
-
-
+            lcd.print("bonne couleur");
+            delay(random(250, 2500));
+            start = true;
+        }
+        else if( led + 10 != bouton_rouge && digitalRead(bouton_rouge)) {
+			erreur2++;
+            lcdnscreen();
+			delay(250);
+		}else if(led + 10 != bouton_vert && digitalRead(bouton_vert)) {
+			erreur2++;
+            lcdnscreen();
+			delay(250);
+		}else if(led + 10 != bouton_bleu && digitalRead(bouton_bleu)) {
+			erreur2++;
+            lcdnscreen();
+			delay(250);
+		}else if(led + 10 != bouton_jaune && digitalRead(bouton_jaune)) {
+			erreur2++;
+            lcdnscreen();
+			delay(250);
+		}
+    }
 }
