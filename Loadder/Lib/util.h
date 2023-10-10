@@ -2,10 +2,10 @@
 #define UTIL.H
 #include <LiquidCrystal.h>
 
-const int bouton_rouge = 0;
-const int bouton_vert = 1;
-const int bouton_bleu = 2;
-const int bouton_jaune = 3;
+const int bouton_rouge = A0;
+const int bouton_vert = A1;
+const int bouton_bleu = A2;
+const int bouton_jaune = A3;
 const int bouton_reset = 2; // <- Que les pins 2 ou 3
 
 const int led_rouge = 4;

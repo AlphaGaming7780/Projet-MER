@@ -94,19 +94,19 @@ void SimonLoop() {
 			digitalWrite(sequence[i], LOW);
 			i++;
 			delay(250);
-		} else if( sequence[i] - 4 != bouton_rouge && analogRead(bouton_rouge) >= 512) {
+		} else if( sequence[i] - 4 != bouton_rouge && digitalRead(bouton_rouge) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);
-		}else if(sequence[i] - 4 != bouton_vert && analogRead(bouton_vert) >= 512) {
+		}else if(sequence[i] - 4 != bouton_vert && digitalRead(bouton_vert) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);
-		}else if(sequence[i] - 4 != bouton_bleu && analogRead(bouton_bleu) >= 512) {
+		}else if(sequence[i] - 4 != bouton_bleu && digitalRead(bouton_bleu) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);
-		}else if(sequence[i] - 4 != bouton_jaune && analogRead(bouton_jaune) >= 512) {
+		}else if(sequence[i] - 4 != bouton_jaune && digitalRead(bouton_jaune) >= 512) {
 			erreur++;
 			LCD_LorsDuJeu();
 			delay(250);
