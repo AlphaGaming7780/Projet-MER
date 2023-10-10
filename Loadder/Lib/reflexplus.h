@@ -44,7 +44,7 @@ void ReflexplusLoop(){
         lcdnscreen();
     }
     else{
-        if (digitalRead(led+10)){
+        if (!digitalRead(led+10)){
             digitalWrite(led, HIGH);
             ToneBuzzer((led-3)*2500, 250);
             digitalWrite(led, LOW);
@@ -53,19 +53,19 @@ void ReflexplusLoop(){
             delay(random(250, 2500));
             start = true;
         }
-        else if( led + 10 != bouton_rouge && digitalRead(bouton_rouge)) {
+        else if( led + 10 != bouton_rouge && !digitalRead(bouton_rouge)) {
 			erreur2++;
             lcdnscreen();
 			delay(250);
-		}else if(led + 10 != bouton_vert && digitalRead(bouton_vert)) {
+		}else if(led + 10 != bouton_vert && !digitalRead(bouton_vert)) {
 			erreur2++;
             lcdnscreen();
 			delay(250);
-		}else if(led + 10 != bouton_bleu && digitalRead(bouton_bleu)) {
+		}else if(led + 10 != bouton_bleu && !digitalRead(bouton_bleu)) {
 			erreur2++;
             lcdnscreen();
 			delay(250);
-		}else if(led + 10 != bouton_jaune && digitalRead(bouton_jaune)) {
+		}else if(led + 10 != bouton_jaune && !digitalRead(bouton_jaune)) {
 			erreur2++;
             lcdnscreen();
 			delay(250);
