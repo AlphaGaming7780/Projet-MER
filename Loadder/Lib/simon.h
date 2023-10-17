@@ -1,7 +1,9 @@
 #include "util.h"
 
-int currentlevel = 3;
-// int temparray[3] = {0,0,0};
+const int StartLevel = 2;
+const int MaxLevelStep = 3;
+int currentlevel = 2;
+int levelStep = 0;
 
 int *sequence = new int [currentlevel]();
 bool gameSetup;
@@ -39,7 +41,7 @@ void LCD_FinDujeu() {
 
 void SimonSetup() {
 
-	currentlevel = 3;
+	currentlevel = StartLevel;
 	gameSetup = true;
 	i = 0;
 	erreur = 0;
@@ -60,9 +62,9 @@ void SimonLoop() {
 			int val = random(4,8);
 			sequence[i] = val;
 			digitalWrite(val,HIGH);
-			ToneBuzzer((val-3)*2500);
+			ToneBuzzer((val-3)*2500, 400);
 			digitalWrite(val, LOW);
-			delay(250);
+			delay(300);
 			i++;
 		} else {
 			LCD_LorsDuJeu();
@@ -74,9 +76,14 @@ void SimonLoop() {
 			LCD_FinDujeu();
 			gameSetup = true;
 			if(erreur >= 3) {
-				currentlevel = 3;
+				currentlevel = StartLevel;
+				levelStep = 0;
 			} else {
-				currentlevel++;
+				levelStep++;
+				if(levelStep >= MaxLevelStep) {
+					levelStep = 0;
+					currentlevel++;
+				}	
 			}
 			erreur = 0;
 			i = 0;
