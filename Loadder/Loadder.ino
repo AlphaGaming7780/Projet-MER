@@ -15,7 +15,6 @@ char *gameList[3] = {
 };
 
 void setup() {
-	Serial.begin(9600);
 	attachInterrupt(digitalPinToInterrupt(bouton_reset), Reset, FALLING);
 	lcd.begin(16, 2);
 
@@ -23,15 +22,13 @@ void setup() {
 		pinMode(pin, OUTPUT);
 	}
 
-	digitalWrite(led_blanc, LOW);
-
 	LoadderSetup();
 
 }
 
 void loop() {
 
-	if(!digitalRead(bouton_reset)) digitalWrite(led_blanc, LOW);
+	if(digitalRead(bouton_reset)) digitalWrite(led_blanc, LOW);
 
 	switch (jeu) {
 	case 1:
@@ -111,9 +108,9 @@ void LoadderSetup() {
 	if(digitalRead(bouton_jaune)) {
 		digitalWrite(led_jaune, HIGH);
 	}
-	if(digitalRead(bouton_reset)) {
-		digitalWrite(led_blanc, LOW);
-	}
+	// if(digitalRead(bouton_reset)) {
+	// 	digitalWrite(led_blanc, HIGH);
+	// }
 
 	randomSeed(analogRead(5));
 	UpdateScreen();
@@ -126,12 +123,11 @@ void UpdateScreen() {
 	lcd.setCursor(0,1),
 	lcd.print("Bleu: ");
 	lcd.print(gameList[gameListIndex + 1]);
-	//Serial.println(sizeof(gameList));
 }
 
 void Reset() {
 
-	// digitalWrite(led_blanc, HIGH);
+	digitalWrite(led_blanc, HIGH);
 
 	LoadderSetup();
 
