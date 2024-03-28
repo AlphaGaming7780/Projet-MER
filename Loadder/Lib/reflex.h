@@ -20,7 +20,7 @@ void ReflexLoop() {
 		etat_bouton = !digitalRead(val+10);
 		digitalWrite(val,HIGH);
 		t1 = millis();
-		tone(buzzer, (val-3)*2500, 250);
+		tone(buzzer, (val-3)*2000, 250);
 		newgame = false;
 	}
 

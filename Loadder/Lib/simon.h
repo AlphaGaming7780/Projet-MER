@@ -62,7 +62,7 @@ void SimonLoop() {
 			int val = random(4,8);
 			sequence[i] = val;
 			digitalWrite(val,HIGH);
-			ToneBuzzer((val-3)*2500, 400);
+			ToneBuzzer((val-3)*2000, 400);
 			digitalWrite(val, LOW);
 			delay(300);
 			i++;
