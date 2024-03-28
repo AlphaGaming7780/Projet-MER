@@ -53,7 +53,7 @@ void ReflexplusLoop(){
 			delay(250);
 		} else if (!digitalRead(led+10)){
             digitalWrite(led, HIGH);
-            ToneBuzzer((led-3)*2000, 250);
+            ToneBuzzer((led-3)*2500, 250);
             digitalWrite(led, LOW);
             lcd.clear();
             lcd.print("bonne couleur");

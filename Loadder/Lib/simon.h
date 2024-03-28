@@ -62,9 +62,9 @@ void SimonLoop() {
 			int val = random(4,8);
 			sequence[i] = val;
 			digitalWrite(val,HIGH);
-			ToneBuzzer((val-3)*2000, 400);
+			ToneBuzzer((val-3)*2500, 400);
 			digitalWrite(val, LOW);
-			delay(300);
+			delay(100);
 			i++;
 		} else {
 			LCD_LorsDuJeu();
@@ -92,25 +92,25 @@ void SimonLoop() {
 		} else if( sequence[i] + 10 != bouton_rouge && !digitalRead(bouton_rouge)) {
 			erreur++;
 			LCD_LorsDuJeu();
-			delay(250);
+			delay(100);
 		}else if(sequence[i] + 10 != bouton_vert && !digitalRead(bouton_vert)) {
 			erreur++;
 			LCD_LorsDuJeu();
-			delay(250);
+			delay(100);
 		}else if(sequence[i] + 10 != bouton_bleu && !digitalRead(bouton_bleu)) {
 			erreur++;
 			LCD_LorsDuJeu();
-			delay(250);
+			delay(100);
 		}else if(sequence[i] + 10 != bouton_jaune && !digitalRead(bouton_jaune)) {
 			erreur++;
 			LCD_LorsDuJeu();
-			delay(250);
+			delay(100);
 		} else if(!digitalRead(sequence[i] + 10)) {
 			digitalWrite(sequence[i],HIGH);
 			ToneBuzzer((sequence[i]-3)*2500);
 			digitalWrite(sequence[i], LOW);
 			i++;
-			delay(250);
+			// delay(250);
 		}
 	}
 }
