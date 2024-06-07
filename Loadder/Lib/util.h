@@ -72,7 +72,7 @@ const void PlayBuzzer(int dutycycle, int time) {
 }
 
 /**
- * Joue une  ertain fréquence pour le buzzer pendant 250 ms
+ * Joue une certain fréquence pour le buzzer pendant 250 ms
  * @param int Frequance
  */
 const void ToneBuzzer(int frequancy) {
