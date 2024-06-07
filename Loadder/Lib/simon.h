@@ -59,7 +59,7 @@ void SimonLoop() {
 	if(gameSetup) {
 
 		if(i<currentlevel) {
-			int val = random(4,8);
+			int val = random(4,8); //led_rouge à led_jaune + 1
 			sequence[i] = val;
 			digitalWrite(val,HIGH);
 			ToneBuzzer((val-3)*2500, 400);
